@@ -1,0 +1,34 @@
+{
+	"manifest_version": 2,
+	"name": "Email Action Buttons",
+	"version": "1.0.0",
+	"description": "Finds Schema.org EmailMessage/ViewAction metadata in messages and lists the discovered links in a toolbar menu.",
+	"author": "Tim Bond",
+	"homepage_url": "https://github.com/cookieguru/email-action-buttons",
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "cookieguru.email-action-buttons@addons.thunderbird.net",
+			"strict_min_version": "115.0"
+		}
+	},
+	"icons": {
+		"48": "icons/icon.svg",
+		"96": "icons/icon.svg"
+	},
+	"permissions": [
+		"menus",
+		"messagesRead"
+	],
+	"background": {
+		"scripts": [
+			"parser.js",
+			"background.js"
+		]
+	},
+	"message_display_action": {
+		"type": "menu",
+		"default_title": "Email Actions",
+		"default_label": "Email Actions",
+		"default_icon": "icons/icon.svg"
+	}
+}

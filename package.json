@@ -1,0 +1,38 @@
+{
+	"name": "email-action-buttons",
+	"version": "1.0.0",
+	"description": "Thunderbird extension that detects Schema.org EmailMessage/ViewAction metadata and lists the discovered links in a toolbar menu.",
+	"private": true,
+	"license": "MIT",
+	"type": "commonjs",
+	"engines": {
+		"node": "^24.15.0 || >=26.0.0"
+	},
+	"scripts": {
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"lint:js": "npx eslint",
+		"lint": "npm run lint:js",
+		"lint:extension": "npx web-ext lint --source-dir .",
+		"check": "npm run lint && npm test && npm run lint:extension",
+		"package:xpi": "npx web-ext build --source-dir . --artifacts-dir dist --overwrite-dest --filename \"email-action-buttons-{version}.xpi\""
+	},
+	"webExt": {
+		"ignoreFiles": [
+			"README.md",
+			"eslint.config.mjs",
+			"package.json",
+			"package-lock.json",
+			"tests"
+		]
+	},
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"@stylistic/eslint-plugin": "^5.10.0",
+		"eslint": "^10.14.0",
+		"globals": "^17.13.0",
+		"jsdom": "^30.1.3",
+		"vitest": "^5.0.5",
+		"web-ext": "^10.8.0"
+	}
+}
