@@ -10,7 +10,7 @@ function isSchemaType(value, expectedType) {
 	return types.some(type => typeof type === 'string' && SCHEMA_TYPE_PATTERN.exec(type.trim())?.[1] === expectedType);
 }
 
-function isSafeHttpUrl(value) {
+function isHttpsUrl(value) {
 	if(typeof value !== 'string') {
 		return false;
 	}
@@ -18,7 +18,7 @@ function isSafeHttpUrl(value) {
 	try {
 		const {protocol} = new URL(value);
 
-		return protocol === 'https:' || protocol === 'http:';
+		return protocol === 'https:';
 	} catch {
 		return false;
 	}
@@ -41,7 +41,7 @@ function deduplicateActions(actions) {
 }
 
 function toViewAction(name, url) {
-	return isSafeHttpUrl(url) ? [{type: 'ViewAction', name, url}] : [];
+	return isHttpsUrl(url) ? [{type: 'ViewAction', name, url}] : [];
 }
 
 function parseMicrodataAction(element) {
@@ -117,5 +117,5 @@ async function extractActionsFromMessage(messageId) {
 }
 
 globalThis.EmailActionParser = {
-	extractActionsFromMessage, extractActionsFromMessagePart, parseHtmlForActions,
+	extractActionsFromMessage, extractActionsFromMessagePart, isHttpsUrl, parseHtmlForActions,
 };
