@@ -280,6 +280,45 @@ describe('Schema.org email action parser', () => {
 	});
 
 
+	test('rejects unencrypted http URLs', () => {
+		const html = `
+          <script type="application/ld+json">
+          {
+            "@type": "EmailMessage",
+            "potentialAction": {
+              "@type": "ViewAction",
+              "url":
+                "http://example.com/orders/123",
+              "name": "Insecure"
+            }
+          }
+          </script>
+        `;
+
+		const actions = parser.parseHtmlForActions(html);
+
+		expect(actions)
+			.toEqual([]);
+	});
+
+
+	test('rejects unencrypted http URLs in microdata', () => {
+		const html = `
+          <div itemscope itemtype="https://schema.org/EmailMessage">
+            <div itemprop="potentialAction" itemscope itemtype="https://schema.org/ViewAction">
+              <link itemprop="url" href="http://example.com/orders/123">
+              <meta itemprop="name" content="Insecure">
+            </div>
+          </div>
+        `;
+
+		const actions = parser.parseHtmlForActions(html);
+
+		expect(actions)
+			.toEqual([]);
+	});
+
+
 	test('rejects file URLs', () => {
 		const html = `
           <script type="application/ld+json">

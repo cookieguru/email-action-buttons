@@ -104,7 +104,7 @@ messenger.menus.onShown.addListener(async (info, tab) => {
 messenger.menus.onClicked.addListener(async ({menuItemId}) => {
 	const url = urlsByMenuItemId.get(menuItemId);
 
-	if(!url) {
+	if(!EmailActionParser.isHttpsUrl(url)) {
 		return;
 	}
 

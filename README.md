@@ -81,6 +81,6 @@ Each action opens its URL in a new Thunderbird tab.
 
 ## Security
 
-Only http:// and https:// URLs are accepted.
+Only https:// URLs are accepted.
 
 javascript:, data:, file:, and other protocols are rejected.

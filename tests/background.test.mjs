@@ -334,4 +334,19 @@ describe('Email Actions menu', () => {
 		expect(openedUrls).toEqual(['https://example.com/2']);
 	});
 
+
+	test('does not list or open unencrypted http actions', async () => {
+		messageBody = jsonLd(
+			{name: 'Insecure', url: 'http://example.com/1'},
+			{name: 'Secure', url: 'https://example.com/2'},
+		);
+		await showMenu();
+
+		expect(menuItems.map(item => item.title)).toEqual(['Secure (example.com)']);
+
+		await listeners.onClicked({menuItemId: menuItems[0].id});
+
+		expect(openedUrls).toEqual(['https://example.com/2']);
+	});
+
 });
