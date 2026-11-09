@@ -77,7 +77,7 @@ messages.
 Click it to see the discovered actions in a menu, labelled with the hostname each
 one opens.
 
-Each action opens its URL in a new Thunderbird tab.
+Each action opens its URL in your default browser.
 
 ## Security
 

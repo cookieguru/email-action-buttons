@@ -109,7 +109,7 @@ messenger.menus.onClicked.addListener(async ({menuItemId}) => {
 	}
 
 	try {
-		await messenger.tabs.create({url});
+		await messenger.windows.openDefaultBrowser(url);
 	} catch(error) {
 		console.error('Could not open action URL:', error);
 	}

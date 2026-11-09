@@ -71,8 +71,10 @@ beforeEach(() => {
 			onShown: {addListener: listener => { listeners.onShown = listener; }},
 			onClicked: {addListener: listener => { listeners.onClicked = listener; }},
 		},
+		windows: {
+			openDefaultBrowser: async url => { openedUrls.push(url); },
+		},
 		tabs: {
-			create: async ({url}) => { openedUrls.push(url); },
 			onActivated: {addListener: listener => { listeners.onActivated = listener; }},
 		},
 	};
