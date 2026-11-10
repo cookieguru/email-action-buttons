@@ -5,7 +5,7 @@
 Thunderbird extension that detects Schema.org EmailMessage/ViewAction
 metadata in email messages.
 
-![The Email Actions menu listing View Pull Request (github.com) on a GitHub notification](https://addons.thunderbird.net/user-media/previews/full/209/209523.png)
+![The Email Actions menu listing View Pull Request (github.com) on a GitHub notification](https://addons.thunderbird.net/user-media/previews/full/209/209716.png)
 
 ## Supported formats
 
